@@ -2,6 +2,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def simulate_binary_anchor(r_mode="convergence", steps=100):
+    """
+    Simulates the Binary Anchor Model dynamic system (Chapter 3).
+    
+    Parameters:
+        r_mode (str): 'convergence' (Scenario 1), 'oscillation' (Scenario 2), or 'burst' (Scenario 3).
+        steps (int): Number of discrete time steps.
+        
+    Returns:
+        A (ndarray): System Alignment over time.
+        L (ndarray): System/Cognitive Load over time.
+    """
     # 初期値の設定 (Initial Conditions)
     A = np.zeros(steps)
     L = np.zeros(steps)
@@ -53,35 +64,39 @@ def simulate_binary_anchor(r_mode="convergence", steps=100):
         
     return A, L
 
-# シミュレーション実行と描画 (Run and Plot)
-steps = 100
-time = np.arange(steps)
+if __name__ == "__main__":
+    # シミュレーション実行と描画 (Run and Plot)
+    steps = 100
+    time = np.arange(steps)
 
-A1, L1 = simulate_binary_anchor("convergence", steps)
-A2, L2 = simulate_binary_anchor("oscillation", steps)
-A3, L3 = simulate_binary_anchor("burst", steps)
+    A1, L1 = simulate_binary_anchor("convergence", steps)
+    A2, L2 = simulate_binary_anchor("oscillation", steps)
+    A3, L3 = simulate_binary_anchor("burst", steps)
 
-fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 8), sharex=True)
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 8), sharex=True)
 
-# 整合度 At のグラフ
-ax1.plot(time, A1, 'g-', label='Scenario 1: Adaptive Convergence (r=0.5)', linewidth=2)
-ax1.plot(time, A2, color='orange', label='Scenario 2: Dynamic Oscillation (r alternates)', linewidth=2)
-ax1.plot(time, A3, 'r-', label='Scenario 3: Critical Burst (r->0.02)', linewidth=2)
-ax1.set_ylabel('System Alignment $A_t$', fontsize=12)
-ax1.legend(loc='lower right')
-ax1.grid(True, linestyle='--', alpha=0.6)
-ax1.set_ylim(0, 1.05)
+    # 整合度 At のグラフ
+    ax1.plot(time, A1, 'g-', label='Scenario 1: Adaptive Convergence (r=0.5)', linewidth=2)
+    ax1.plot(time, A2, color='orange', label='Scenario 2: Dynamic Oscillation (r alternates)', linewidth=2)
+    ax1.plot(time, A3, 'r-', label='Scenario 3: Critical Burst (r->0.02)', linewidth=2)
+    ax1.set_ylabel('System Alignment $A_t$', fontsize=12)
+    ax1.legend(loc='lower right')
+    ax1.grid(True, linestyle='--', alpha=0.6)
+    ax1.set_ylim(0, 1.05)
 
-# システム負荷 Lt のグラフ
-ax2.plot(time, L1, 'g-', label='Scenario 1: Adaptive Convergence', linewidth=2)
-ax2.plot(time, L2, color='orange', label='Scenario 2: Dynamic Oscillation', linewidth=2)
-ax2.plot(time, L3, 'r-', label='Scenario 3: Critical Burst', linewidth=2)
-ax2.axhline(y=15.0, color='k', linestyle=':', label='Critical Threshold $T_L=15.0$', linewidth=1.5)
-ax2.set_xlabel('Time Step (t)', fontsize=12)
-ax2.set_ylabel('System Load $L_t$', fontsize=12)
-ax2.legend(loc='upper left')
-ax2.grid(True, linestyle='--', alpha=0.6)
-ax2.set_ylim(0, 20.0)
+    # システム負荷 Lt のグラフ
+    ax2.plot(time, L1, 'g-', label='Scenario 1: Adaptive Convergence', linewidth=2)
+    ax2.plot(time, L2, color='orange', label='Scenario 2: Dynamic Oscillation', linewidth=2)
+    ax2.plot(time, L3, 'r-', label='Scenario 3: Critical Burst', linewidth=2)
+    ax2.axhline(y=15.0, color='k', linestyle=':', label='Critical Threshold $T_L=15.0$', linewidth=1.5)
+    ax2.set_xlabel('Time Step (t)', fontsize=12)
+    ax2.set_ylabel('System Load $L_t$', fontsize=12)
+    ax2.legend(loc='upper left')
+    ax2.grid(True, linestyle='--', alpha=0.6)
+    ax2.set_ylim(0, 20.0)
 
-plt.tight_layout()
-plt.show()
+    plt.tight_layout()
+    
+    # 画像の自動保存 (Auto-save Figure 2)
+    plt.savefig("figure2_simulation.png", dpi=300)
+    plt.show()
