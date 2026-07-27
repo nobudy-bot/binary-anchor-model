@@ -22,6 +22,7 @@ The script `binary_anchor_simulation.py` reproduces the discrete-time dynamic sy
 
 *Note: This model also simulates System B over-reliance ($r \to 0$), corresponding to AI automation bias, agentic delegation, and recursive model collapse.*
 
+![Figure 2 Simulation Results](./figure2_simulation.png)
 ---
 
 ## Dynamic Scenarios
