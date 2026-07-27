@@ -43,12 +43,3 @@ Executing the script demonstrates three system bifurcations:
 ### Execution
 ```bash
 python binary_anchor_simulation.py
-
-@article{sawada2026binary,
-  title={The Binary Anchor: Cognition, Symbolic Loops, and Systems Failure},
-  author={Sawada, Norimitsu},
-  year={2026},
-  doi={10.5281/zenodo.21566424},
-  publisher={Zenodo},
-  url={https://doi.org/10.5281/zenodo.21566424}
-}
