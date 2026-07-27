@@ -54,6 +54,5 @@ If you use this model, concepts, or simulation code in your research, please cit
   year={2026},
   month={jul},
   howpublished={Zenodo},
-  doi={10.5281/zenodo.21566424},
-  url={https://doi.org/10.5281/zenodo.21566424}
+  doi={10.5281/zenodo.21566424}
 }
