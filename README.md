@@ -48,11 +48,12 @@ python binary_anchor_simulation.py
 ### Citation
 If you use this model, concepts, or simulation code in your research, please cite:
 
-@article{sawada2026binary,
+@misc{sawada2026binary,
   title={The Binary Anchor: Cognition, Symbolic Loops, and Systems Failure},
   author={Sawada, Norimitsu},
   year={2026},
+  month={jul},
+  howpublished={Zenodo},
   doi={10.5281/zenodo.21566424},
-  publisher={Zenodo},
   url={https://doi.org/10.5281/zenodo.21566424}
 }
