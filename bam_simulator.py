@@ -5,7 +5,7 @@ import pandas as pd
 import seaborn as sns
 
 '''
-Binary Anchor Model (BAM) V2.4 - Numerical Simulation
+Binary Anchor Model (BAM) - Numerical Simulation
 This script simulates the Master Equation A_t = WTA(V_t) and 
 the accumulation of Hesitation Energy H_t based on Amygdala Plasticity (eta_A0).
 '''
