@@ -1,59 +1,60 @@
-# The Binary Anchor Model: Simulation Code
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21566424.svg)](https://doi.org/10.5281/zenodo.21566424)
+# Binary Anchor Model (BAM) V2.0
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21759689.svg)](https://doi.org/10.5281/zenodo.21759689)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
 This repository contains the official Python simulation code for the paper:  
 **"The Binary Anchor: Cognition, Symbolic Loops, and Systems Failure"** by **Norimitsu Sawada**.
 
-- **Paper DOI (Zenodo)**: [10.5281/zenodo.21566424](https://doi.org/10.5281/zenodo.21566424)
-- **Jxiv Preprint**: Pending (JST)
+- **Zenodo Preprint (V2.0.0):** [DOI: 10.5281/zenodo.21759689](https://doi.org/10.5281/zenodo.21759689)
+- **Concept DOI (All Versions):** [DOI: 10.5281/zenodo.21566423](https://doi.org/10.5281/zenodo.21566423)
+- **License:** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/
 
 ---
 
 ## Overview
 
-The script `binary_anchor_simulation.py` reproduces the discrete-time dynamic system simulation (Figure 2) presented in Chapter 3 of the paper. It models the dynamic interactions between:
+The Binary Anchor Model (BAM) describes decision-making as a two-layer homeostatic structure:
+- **System A (Biological Anchor):** Rooted in survival, interoception, and the amygdala.
+- **System B (Social Anchor):** Rooted in language, institutions, and the PFC.
 
-- **System Alignment ($A_t$)**: Internal/external coherence.
-- **Cognitive/Institutional Load ($L_t$)**: Accumulated decision fatigue and rule overhead.
-- **Internal Measurement Metric ($m_t$)**: The internal "ruler" used to interpret symbols.
-- **Responsibility Allocation Parameter ($r$)**: Subjective agency ($r \to 1$) vs. system dependency ($r \to 0$).
-
-*Note: This model also simulates System B over-reliance ($r \to 0$), corresponding to AI automation bias, agentic delegation, and recursive model collapse.*
-
-![Figure 2 Simulation Results](./figure2_simulation.png)
----
-
-## Dynamic Scenarios
-
-Executing the script demonstrates three system bifurcations:
-1. **Scenario 1: Adaptive Convergence** ($r = 0.5$) — Stable self-correction and load decay.
-2. **Scenario 2: Dynamic Oscillation** ($r$ alternates) — Periodic floating of responsibility and persistent stack.
-3. **Scenario 3: Critical Burst** ($r \to 0.02$) — Complete delegation to rules/AI, leading to exponential load accumulation ($L_t \ge 15.0$), freeze ($k_t \approx 0$), and non-linear system failure.
+Version 2.0 formalizes the Master Equation $A_t = \text{WTA}(V_t) \in \{0, 1\}$ as the apex organizing principle, systematizes all equations within a Level 0–3 modular argument-space structure, and introduces the probabilistic Soft-WTA extension.
 
 ---
 
-## How to Run
+## Key Formalizations
 
-### Prerequisites
-- Python 3.x
-- NumPy
-- Matplotlib
+- **Master Equation & Soft-WTA:** $A_t \sim \text{Bernoulli}(\sigma(V_t - T_E))$
+- **Hesitation Energy ($H_t$) & Accumulated Load ($I_t$):** Dual-trigger mechanisms for computational breakdown (Burst).
+- **Neurobiological Grounding of $\eta_{A0}$:** Amygdala sensitivity and plasticity ($\eta_A(t) = \eta_{A0} \cdot (1 - \phi_t)$).
+- **Quantification of $T_{\text{recovery}}$ & [R-3] $h_t$ Threshold Modification:** Recovery paths from Type 1 Burst and past violence reinforcement dynamics.
 
-### Execution
-```bash
-python binary_anchor_simulation.py
-```
+---
 
-### Citation
+## Simulation
+
+Run the BAM simulator (requires `numpy`, `matplotlib`, `pandas`, `seaborn`):
+
+<pre><code>python binary_anchor_simulation.py</code></pre>
+
+---
+
+## Citation
+
 If you use this model, concepts, or simulation code in your research, please cite:
 
-@misc{sawada2026binary,
-  title={The Binary Anchor: Cognition, Symbolic Loops, and Systems Failure},
-  author={Sawada, Norimitsu},
-  year={2026},
-  month={jul},
-  howpublished={Zenodo},
-  doi={10.5281/zenodo.21566424}
-}
+<pre><code>@techreport{sawada2026binary,
+  author      = {Sawada, Norimitsu},
+  title       = {The Binary Anchor: Cognition, Symbolic Loops, and Systems Failure},
+  institution = {Zenodo},
+  year        = {2026},
+  month       = {aug},
+  version     = {2.0.0},
+  doi         = {10.5281/zenodo.21759689},
+  url         = {https://doi.org/10.5281/zenodo.21759689}
+}</code></pre>
+
+---
+
+## License
+
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
