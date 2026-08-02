@@ -34,7 +34,7 @@ Version 2.0 formalizes the Master Equation $A_t = \text{WTA}(V_t) \in \{0, 1\}$ 
 
 Run the BAM simulator (requires `numpy`, `matplotlib`, `pandas`, `seaborn`):
 
-<pre><code>python BAM_simulator.py</code></pre>
+<pre><code>python bam_simulator.py</code></pre>
 
 ---
 
