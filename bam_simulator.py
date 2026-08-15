@@ -69,7 +69,7 @@ def plot_results(df, bursts, filename='bam_simulation_result.png'):
     ax1.plot(df['t'], df['m_sys'], label='Social Demand (m_sys)', color='blue', linestyle='--')
     ax1.plot(df['t'], df['V_t'], label='WTA Argument (V_t)', color='black', linewidth=2)
     ax1.axhline(0.5, color='red', linestyle=':', label='WTA Threshold')
-    ax1.set_title("BAM V2.4: Master Equation Dynamics")
+    ax1.set_title("BAM V2.0: Master Equation Dynamics")
     ax1.legend(loc='upper right')
     
     # Plot 2: Hesitation Energy and Bursts
@@ -77,7 +77,7 @@ def plot_results(df, bursts, filename='bam_simulation_result.png'):
     ax2.axhline(10.0, color='darkred', linestyle='--', label='Burst Threshold (theta)')
     for b in bursts:
         ax2.axvline(b, color='orange', alpha=0.3)
-    ax2.set_title("BAM V2.4: Hesitation Energy Accumulation")
+    ax2.set_title("BAM V2.0: Hesitation Energy Accumulation")
     ax2.set_xlabel("Time (t)")
     ax2.legend(loc='upper right')
     
