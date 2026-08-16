@@ -27,45 +27,58 @@ pip install -r requirements.txt
 ```
 
 ### Simulation Options:
-- **Option A: Clean / Standalone Simulation (Recommended)**  
-  Runs instantly in any headless/server/local environment without pandas/seaborn dependencies:
+
+- **Option A: Micro-Cognitive Engine (V2.0 Core / Recommended)**  
+  Runs the high-resolution simulation of the Master Equation $A_t = \mathrm{WTA}(V_t)$. Focuses on individual brain dynamics (Amygdala vs. PFC):
   ```bash
   python bam_engine.py
   ```
-- **Option B: Original Paper Simulation Script**  
-  The original baseline script used to generate figures in the preprint:
+
+- **Option B: Original Paper Baseline (V2.0)**  
+  The original baseline script used to generate figures in the V2.0 preprint:
   ```bash
   python bam_simulator.py
   ```
 
+- **Option C: Macro-Social Dynamics (V1.0 Legacy)**  
+  Simulates the inter-observer interaction loop, demonstrating institutional fossilization and system-wide "Critical Burst":
+  ```bash
+  python legacy_simulations/bam_v1_macro_dynamics.py
+  ```
+
 ### Outputs Generated:
-Both scripts execute in under 1 second and save publication-quality figures (300 dpi) matching Section 8 of the paper:
-- `bam_simulation_vulnerable.png` (Dynamics of Master Equation & Hesitation Energy accumulation)
-- `bam_comparison_eta.png` (Comparison between Resilient vs. Vulnerable profiles based on Amygdala plasticity $\eta_{A0}$)
+- **V2.0 Output:** `bam_simulation_vulnerable.png`, `bam_comparison_eta.png` (Individual cognitive collapse/recovery matching Section 8).
+- **V1.0 Output:** `bam_v1_simulation.png` (Reproduction of Figure 2 from V1 paper: Convergence, Oscillation, and Burst scenarios).
 
 ---
 
-## 🧠 Overview
+## 🧠 Multiscale Architecture
 
-The **Binary Anchor Model (BAM)** formalizes human decision-making and cognitive collapse as a two-layer homeostatic structure:
+The **Binary Anchor Model (BAM)** is a fractal theoretical framework that describes the same structural trap across different scales:
+
+| Scale | Model Version | Focus | Core Mechanism |
+| :--- | :--- | :--- | :--- |
+| **Micro (Brain)** | **V2.0 (Core)** | Individual Decision-making | WTA Master Equation / Amygdala-PFC Antagonism |
+| **Macro (Society)** | **V1.0 (Legacy)** | Institutional Saturation | Recursive Update Loops / Fossilized Knowledge |
+
 - **System A (Biological Anchor):** Rooted in survival, interoception, and the amygdala.
 - **System B (Social Anchor):** Rooted in language, institutions, and the PFC.
 
-Version 2.0 formalizes the Master Equation $A_t = \text{WTA}(V_t) \in \{0, 1\}$ as the apex organizing principle, systematizes all equations within a Level 0–3 modular argument-space structure, and introduces the probabilistic Soft-WTA extension.
+---
 
-### Master Equation:
+## 🛠 Master Equation (V2.0)
+
+Version 2.0 formalizes the Master Equation as the apex organizing principle of the framework:
+
 $$A_t = \mathrm{WTA}(V_t) \in \{0, 1\}$$
 $$V_t = r_t \cdot m_t + (1 - r_t) \cdot m_{\mathrm{sys}, t}$$
 $$\mathrm{WTA}(V_t) = \theta(V_t - T_{\mathrm{E}})$$
 
----
-
-## Key Formalizations
-
-- **Master Equation & Soft-WTA:** $A_t \sim \text{Bernoulli}(\sigma(V_t - T_E))$
+### Key Formalizations:
+- **Probabilistic Extension (Soft-WTA):** $A_t \sim \mathrm{Bernoulli}(\sigma(V_t - T_{\mathrm{E}}))$
 - **Hesitation Energy ($H_t$) & Accumulated Load ($I_t$):** Dual-trigger mechanisms for computational breakdown (Burst).
 - **Neurobiological Grounding of $\eta_{A0}$:** Amygdala sensitivity and plasticity ($\eta_{\mathrm{A}}(t) = \eta_{A0} \cdot (1 - \phi_t)$).
-- **Quantification of $T_{\text{recovery}}$ & [R-3] $h_t$ Threshold Modification:** Recovery paths from Type 1 Burst and past violence reinforcement dynamics.
+- **Recovery & Threshold Modification:** Quantification of $T_{\mathrm{recovery}}$ and past violence history ($h_t$) effects.
 
 ---
 
@@ -86,6 +99,11 @@ If you use this model, concepts, or simulation code in your research, please cit
 }
 ```
 
+---
+
+## License
+
+This project is licensed under the Creative Commons Attribution 4.0 International License - see the [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) details.
 ---
 
 ## License
