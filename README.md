@@ -104,8 +104,3 @@ If you use this model, concepts, or simulation code in your research, please cit
 ## License
 
 This project is licensed under the Creative Commons Attribution 4.0 International License - see the [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) details.
----
-
-## License
-
-This project is licensed under the Creative Commons Attribution 4.0 International License - see the [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) details.
