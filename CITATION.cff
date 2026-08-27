@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software or model, please cite it as below."
+authors:
+  - family-names: "Sawada"
+    given-names: "Norimitsu"
+    orcid: "https://orcid.org/0009-0001-3306-0048"
+title: "Binary Anchor Model (BAM) - Official Python Simulation Engine"
+version: 2.0.1
+doi: 10.5281/zenodo.22120816
+date-released: 2026-08-27
+url: "https://github.com/nobudy-bot/binary-anchor-model"
