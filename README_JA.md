@@ -11,6 +11,7 @@
 の公式 Python シミュレーションコードを収録しています。
 
 - **Zenodo プレプリント (V2.0.0 英語版):** [DOI: 10.5281/zenodo.21759689](https://doi.org/10.5281/zenodo.21759689)
+- **ソフトウェア・アーカイブ (コード DOI):** [DOI: 10.5281/zenodo.22120816](https://doi.org/10.5281/zenodo.22120816)
 - **コンセプト DOI (全バージョン共通):** [DOI: 10.5281/zenodo.21566423](https://doi.org/10.5281/zenodo.21566423)
 - **ライセンス:** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
