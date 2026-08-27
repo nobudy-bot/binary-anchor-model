@@ -9,7 +9,8 @@
 This repository contains the official Python simulation code for the paper:  
 **"The Binary Anchor: Cognition, Symbolic Loops, and Systems Failure"** by **Norimitsu Sawada**.
 
-- **Zenodo Preprint (V2.0.0):** [DOI: 10.5281/zenodo.21759689](https://doi.org/10.5281/zenodo.21759689)
+- **Zenodo Preprint (Paper V2.0.0):** [DOI: 10.5281/zenodo.21759689](https://doi.org/10.5281/zenodo.21759689)
+- **Software Archive (Code DOI):** [DOI: 10.5281/zenodo.22120816](https://doi.org/10.5281/zenodo.22120816)
 - **Concept DOI (All Versions):** [DOI: 10.5281/zenodo.21566423](https://doi.org/10.5281/zenodo.21566423)
 - **License:** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
