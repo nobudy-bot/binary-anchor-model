@@ -105,8 +105,17 @@ $$\mathrm{WTA}(V_t) = \theta(V_t - T_{\mathrm{E}})$$
 }
 ```
 
----
-
+```bibtex
+@article{sawada2026binary_ja,
+  author      = {澤田, 法光},
+  title       = {バイナリー・アンカー・モデル（BAM）：認知・記号ループ・システム不全に関する統合的概念フレームワーク},
+  journal     = {Jxiv プレプリント},
+  year        = {2026},
+  month       = {sep},
+  doi         = {10.51094/jxiv.5746},
+  url         = {https://doi.org/10.51094/jxiv.5746}
+}
+```
 ## ライセンス
 
 本プロジェクトは [クリエイティブ・コモンズ 表示 4.0 国際 ライセンス (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/deed.ja) の下で公開されています。
