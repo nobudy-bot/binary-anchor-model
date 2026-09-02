@@ -3,6 +3,7 @@
 [ [English](README.md) | **日本語** ]
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21759689.svg)](https://doi.org/10.5281/zenodo.21759689)
+[![Jxiv DOI](https://img.shields.io/badge/Jxiv_DOI-10.51094%2Fjxiv.5746-007EC6.svg)](https://doi.org/10.51094/jxiv.5746)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
@@ -11,6 +12,7 @@
 の公式 Python シミュレーションコードを収録しています。
 
 - **Zenodo プレプリント (V2.0.0 英語版):** [DOI: 10.5281/zenodo.21759689](https://doi.org/10.5281/zenodo.21759689)
+- **JST Jxiv プレプリント (日本語版):** [DOI: 10.51094/jxiv.5746](https://doi.org/10.51094/jxiv.5746)
 - **ソフトウェア・アーカイブ (コード DOI):** [DOI: 10.5281/zenodo.22120816](https://doi.org/10.5281/zenodo.22120816)
 - **コンセプト DOI (全バージョン共通):** [DOI: 10.5281/zenodo.21566423](https://doi.org/10.5281/zenodo.21566423)
 - **ライセンス:** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
