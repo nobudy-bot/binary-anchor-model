@@ -52,8 +52,15 @@ pip install -r requirements.txt
   python legacy_simulations/bam_v1_macro_dynamics.py
   ```
 
+- **オプション D: 実証的イン・シリコ検証（合成MBIマッピング）**  
+  BAMのコア方程式を、合成された経験的データ分布（MBI: バーンアウト指標 / JD-Rプロファイルへのマッピング）に対して評価します。システム・バースト予測の精度を示すROC-AUCパフォーマンス指標を生成します：
+  ```bash
+  python bam_empirical_validation.py
+  ``` 
+
 ### 生成される出力図表:
 - **V2.0 出力:** `bam_simulation_vulnerable.png`, `bam_comparison_eta.png`（個人の認知崩壊および回復プロセスの動態 / 第8章に対応）
+- **実証検証 出力:** `bam_empirical_results.jpg`（躊躇エネルギーの表面図、バースト相転移、ROC-AUC曲線、および自律性によるリスク層別化を示す4分割診断プロット）
 - **V1.0 出力:** `bam_v1_simulation.png`（V1論文 Figure 2 の再現：適応的収束、再帰的振動、臨界バーストの3分岐シナリオ）
 
 ---
