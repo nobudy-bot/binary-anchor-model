@@ -2,7 +2,7 @@
 
 [ [English](README.md) | **日本語** ]
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21759689.svg)](https://doi.org/10.5281/zenodo.21759689)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23074837.svg)](https://doi.org/10.5281/zenodo.23074837)
 [![Jxiv DOI](https://img.shields.io/badge/Jxiv_DOI-10.51094%2Fjxiv.5746-007EC6.svg)](https://doi.org/10.51094/jxiv.5746)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
@@ -11,7 +11,7 @@
 **『The Binary Anchor: Cognition, Symbolic Loops, and Systems Failure（バイナリー・アンカー：認知、記号ループ、およびシステム不全）』**  
 の公式 Python シミュレーションコードを収録しています。
 
-- **Zenodo プレプリント (V2.0.0 英語版):** [DOI: 10.5281/zenodo.21759689](https://doi.org/10.5281/zenodo.21759689)
+- **Zenodo プレプリント (V2.0.1 英語版):** [DOI: 10.5281/zenodo.23074837](https://doi.org/10.5281/zenodo.23074837)
 - **JST Jxiv プレプリント (日本語版):** [DOI: 10.51094/jxiv.5746](https://doi.org/10.51094/jxiv.5746)
 - **ソフトウェア・アーカイブ (コード DOI):** [DOI: 10.5281/zenodo.22120816](https://doi.org/10.5281/zenodo.22120816)
 - **コンセプト DOI (全バージョン共通):** [DOI: 10.5281/zenodo.21566423](https://doi.org/10.5281/zenodo.21566423)
@@ -107,8 +107,8 @@ $$\mathrm{WTA}(V_t) = \theta(V_t - T_{\mathrm{E}})$$
   year        = {2026},
   month       = {aug},
   version     = {2.0.0},
-  doi         = {10.5281/zenodo.21759689},
-  url         = {https://doi.org/10.5281/zenodo.21759689}
+  doi         = {10.5281/zenodo.23074837},
+  url         = {https://doi.org/10.5281/zenodo.23074837}
 }
 ```
 
