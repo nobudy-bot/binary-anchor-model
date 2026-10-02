@@ -51,15 +51,15 @@ pip install -r requirements.txt
   python legacy_simulations/bam_v1_macro_dynamics.py
   ```
   
-- **Option D: Empirical In-Silico Validation (Synthetic MBI Mapping)**  
-  Evaluates BAM's core equations against synthetic empirical distributions (mapping to MBI / JD-R profiles). Generates ROC-AUC performance metrics for system burst predictions:
+- **Option D: Conceptual In-Silico Simulation (Somatic Collapse Dynamics)**
+Evaluates the mathematical behavior of BAM's core equations (Hesitation Energy & Accumulated Load) using synthetic distributions to conceptualize somatic collapse and phase transitions. Generates theoretical ROC-AUC metrics demonstrating how systemic subordination drives structural stress debt:
   ```bash
-  python bam_empirical_validation.py
+  python bam_Conceputual_Simulation.py
   ```
 
 ### Outputs Generated:
 - **V2.0 Output:** `bam_simulation_vulnerable.png`, `bam_comparison_eta.png` (Individual cognitive collapse/recovery matching Section 8).
-- **Empirical Output:** bam_empirical_results.jpg` (4-panel diagnostic plot showing Hesitation Energy surface, Burst Phase Transition, ROC-AUC, and Risk Stratification).
+- **Conceptual Output:** `bam_conceptual_insilico_results.png (4-panel diagnostic plot showing Hesitation Energy surface, Somatic Collapse transition, ROC-AUC, and Risk Stratification).
 - **V1.0 Output:** `bam_v1_simulation.png` (Reproduction of Figure 2 from V1 paper: Convergence, Oscillation, and Burst scenarios).
 
 ---
