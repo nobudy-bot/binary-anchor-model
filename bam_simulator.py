@@ -5,9 +5,19 @@ import pandas as pd
 import seaborn as sns
 
 '''
-Binary Anchor Model (BAM) - Numerical Simulation
-This script simulates the Master Equation A_t = WTA(V_t) and 
-the accumulation of Hesitation Energy H_t based on Amygdala Plasticity (eta_A0).
+Binary Anchor Model (BAM) V2.0 - Figure Reproduction Script (Baseline)
+========================================================================
+This script is specifically designed to reproduce Figure 4 and Figure 5 
+from the preprint: "The Binary Anchor: Cognition, Symbolic Loops, and Systems Failure".
+
+* Academic Note for Reviewers: 
+In this visual demonstration script, the environmental variables (m_t and r_t) 
+are intentionally driven by sinusoidal functions to cleanly illustrate the 
+phase transitions and cyclic dynamics for the paper's figures. 
+For the strict, endogenously calculated mathematical engine without forced waves, 
+please run `bam_engine.py` (Option A).
+
+Author: Norimitsu Sawada (Independent Researcher)
 '''
 
 def sigmoid(x):
