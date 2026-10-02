@@ -4,62 +4,81 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 '''
-Binary Anchor Model (BAM) - Numerical Simulation V1.0
+Binary Anchor Model (BAM) V2.0 - Micro-Cognitive Engine
 Official simulation script for "The Binary Anchor: Cognition, Symbolic Loops, and Systems Failure"
-Author: Norimitsu Sawada (ORCID: 0009-0001-3306-0048)
+Author: Norimitsu Sawada (Independent Researcher)
 Repository: https://github.com/nobudy-bot/binary-anchor-model
-Dependencies: ONLY numpy and matplotlib (Maximum portability, zero-friction execution)
+Description: A strict translation of the V2.0 Master Equation (Level 0-3 architecture)
+demonstrating the phase transition from Somatic Friction to Systemic Breakdown.
 '''
 
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
-def run_simulation(T=200, eta_A0=0.05, theta=10.0, seed=42):
+def run_simulation(T=200, eta_A0=0.10, seed=42):
     np.random.seed(seed)
     t = np.arange(T)
     
-    # m_t: Biological needs (System A signals)
-    m_t = 0.5 + 0.3 * np.sin(2 * np.pi * t / 60) + np.random.normal(0, 0.02, T)
-    
-    # m_sys: Social life maintenance (System B signals)
+    # m_sys: System B Demand (Social Anchor / Institutional Pressure)
     m_sys = np.full(T, 0.8)
-    m_sys[120:] = 0.3  # Step-shift in social expectation at t=120
+    m_sys[120:] = 0.3  # Step-shift in social expectation (System B disruption) at t=120
+    
+    # BAM Parameters
+    w_s = 2.0
+    w_delta = 4.0
+    theta_bias = 2.0
+    gamma = 0.02       # Metabolic load dissipation
+    T_E = 0.5          # WTA Excitation Threshold
+    H_max = 0.15       # Type 2 Burst Threshold (Acute Somatic Violence)
+    Theta_acc = 5.0    # Type 1 Burst Threshold (Somatic Collapse / Freeze)
     
     # Initialization
-    H = np.zeros(T)
-    A = np.zeros(T)
-    V = np.zeros(T)
-    r = np.zeros(T)
+    m_t = 0.5          # Biological Needs / Felt Sense (System A baseline)
+    I_current = 0.0    # Accumulated Unprocessed Load (Structural Debt)
+    
+    history = {'t': t, 'm_t': [], 'm_sys': m_sys, 'V_t': [], 'r_t': [], 'H_t': [], 'I_t': [], 'A_t': []}
     bursts = []
     
-    h_current = 0.0
     for i in range(T):
-        # r_t: Responsibility allocation (tension parameter)
-        r_val = 0.7 + 0.2 * np.cos(2 * np.pi * i / 100)
-        r[i] = r_val
+        # 1. Divergence calculation
+        delta_t = m_t - m_sys[i]
+        abs_delta = abs(delta_t)
         
-        # Master Equation: V_t = r*m + (1-r)*m_sys
-        v_val = r_val * m_t[i] + (1 - r_val) * m_sys[i]
-        V[i] = v_val
+        # 2. Survival Urgency (s_t) & Sovereign Assumption (r_t) [Eq. 20]
+        s_t = np.clip(abs_delta * 1.5, 0, 1)
+        r_t = sigmoid(w_s * s_t + w_delta * abs_delta - theta_bias)
         
-        # WTA Decision (Binary Execution: A_t in {0, 1})
-        A[i] = 1 if v_val > 0.5 else 0
+        # 3. Master Equation Integration [Eq. 5]
+        v_t = r_t * m_t + (1 - r_t) * m_sys[i]
         
-        # Divergence delta_t
-        delta = abs(m_t[i] - m_sys[i])
+        # 4. WTA Decision Logic [Eq. 4 & 6]
+        a_t = 1 if v_t > T_E else 0
         
-        # Hesitation Energy (H_t) accumulation with basal amygdala recovery (eta_A0)
-        h_current = max(0.0, h_current + r_val * delta - eta_A0)
+        # 5. Cognitive Loads [Eq. 21 & 29]
+        H_t = r_t * (1 - r_t) * (delta_t ** 2)  # Acute Somatic Friction
+        I_current = (1 - gamma) * I_current + (1 - r_t) * abs_delta # Chronic Load
         
-        # Burst event (Threshold theta exceedance -> Phase transition discharge)
-        if h_current > theta:
-            bursts.append(i)
-            h_current = h_current * 0.1  # 90% discharge reset
+        # 6. Phase Transition (Burst / Somatic Collapse) [Eq. 24 & 25]
+        if H_t > H_max:
+            bursts.append((i, 'Type 2'))
+            H_t, I_current = 0, 0 # Heat dissipation
+        elif I_current > Theta_acc:
+            bursts.append((i, 'Type 1'))
+            I_current = I_current * 0.1 # 90% Discharge/Freeze reset
             
-        H[i] = h_current
+        # 7. System A Auto-correction (Metabolic Update) [Eq. 19 & 14]
+        # High eta_A0 allows m_t to adapt and shrink delta_t, low eta_A0 causes accumulation
+        m_t = np.clip(m_t - eta_A0 * r_t * delta_t, 0, 1)
         
-    # Return as standard dictionary (Pure python, zero pandas dependency)
-    return {'t': t, 'm_t': m_t, 'm_sys': m_sys, 'V_t': V, 'H_t': H, 'A_t': A}, bursts
+        # Record state
+        history['m_t'].append(m_t)
+        history['V_t'].append(v_t)
+        history['r_t'].append(r_t)
+        history['H_t'].append(H_t)
+        history['I_t'].append(I_current)
+        history['A_t'].append(a_t)
+        
+    return history, bursts
 
 def plot_results(data, bursts, filename='bam_simulation_result.png'):
     # Standard matplotlib with clean academic grid aesthetics
@@ -72,22 +91,25 @@ def plot_results(data, bursts, filename='bam_simulation_result.png'):
             spine.set_color('#BBBBBB')
     
     # Plot 1: Components of the Master Equation
-    ax1.plot(data['t'], data['m_t'], label=r'Biological Needs ($m_t$)', color='green', alpha=0.6)
-    ax1.plot(data['t'], data['m_sys'], label=r'Social Demands ($m_{\mathrm{sys}}$)', color='blue', linestyle='--')
+    ax1.plot(data['t'], data['m_t'], label=r'Somatic Reality ($m_t$)', color='green', alpha=0.8)
+    ax1.plot(data['t'], data['m_sys'], label=r'System B Demand ($m_{\mathrm{sys}}$)', color='blue', linestyle='--')
     ax1.plot(data['t'], data['V_t'], label=r'Integrated Input ($V_t$)', color='black', linewidth=2)
     ax1.axhline(0.5, color='red', linestyle=':', label=r'WTA Threshold ($T_{\mathrm{E}}$)')
-    ax1.set_title("BAM V2.0: Master Equation Dynamics", fontsize=14, fontweight='bold')
+    ax1.set_title("BAM V2.0: Master Equation & Somatic Adaptation", fontsize=14, fontweight='bold')
     ax1.set_ylabel("Metric State Space")
     ax1.legend(loc='upper right')
     
-    # Plot 2: Hesitation Energy and Bursts
-    ax2.plot(data['t'], data['H_t'], label=r'Hesitation Energy ($H_t$)', color='purple', linewidth=2)
-    ax2.axhline(10.0, color='darkred', linestyle='--', label=r'Burst Threshold ($\Theta_{\mathrm{burst}}$)')
-    for b in bursts:
-        ax2.axvline(b, color='orange', alpha=0.4, linestyle='-')
-    ax2.set_title("BAM V2.0: Hesitation Energy Accumulation & Burst Discharge", fontsize=14, fontweight='bold')
+    # Plot 2: Unprocessed Load and Somatic Collapse
+    ax2.plot(data['t'], data['I_t'], label=r'Accumulated Load ($I_t$)', color='orange', linewidth=2)
+    ax2.axhline(5.0, color='darkred', linestyle='--', label=r'Collapse Threshold ($\Theta_{\mathrm{acc}}$)')
+    
+    for b_time, b_type in bursts:
+        color = 'red' if 'Type 2' in b_type else 'black'
+        ax2.axvline(b_time, color=color, alpha=0.5, linestyle='-')
+        
+    ax2.set_title("BAM V2.0: Structural Stress Debt & Somatic Collapse", fontsize=14, fontweight='bold')
     ax2.set_xlabel("Timestep ($t$)")
-    ax2.set_ylabel("Cognitive Friction ($H_t$)")
+    ax2.set_ylabel("Accumulated Load ($I_t$)")
     ax2.legend(loc='upper right')
     
     plt.tight_layout()
@@ -96,9 +118,9 @@ def plot_results(data, bursts, filename='bam_simulation_result.png'):
     print(f"[*] Plot successfully saved as {filename}")
 
 if __name__ == "__main__":
-    print("[*] Running BAM simulations...")
-    data_res, b_res = run_simulation(eta_A0=0.10)
-    data_vul, b_vul = run_simulation(eta_A0=0.02)
+    print("[*] Running BAM V2.0 Core simulations...")
+    data_res, b_res = run_simulation(eta_A0=0.10) # Resilient profile
+    data_vul, b_vul = run_simulation(eta_A0=0.02) # Vulnerable profile
     
     # Generate individual dynamics plot
     plot_results(data_vul, b_vul, 'bam_simulation_vulnerable.png')
@@ -108,15 +130,15 @@ if __name__ == "__main__":
     plt.grid(True, color='#E0E0E0', linestyle='-', linewidth=0.5)
     plt.gca().set_facecolor('#FAFAFA')
     
-    plt.plot(data_vul['t'], data_vul['H_t'], 'r', label=r'Vulnerable Profile (Low $\eta_{A0} = 0.02$)', linewidth=2)
-    plt.plot(data_res['t'], data_res['H_t'], 'b', label=r'Resilient Profile (High $\eta_{A0} = 0.10$)', linewidth=2)
-    plt.axhline(10.0, color='black', linestyle='--', label=r'Burst Threshold ($\Theta = 10.0$)')
-    plt.title(r"BAM: Impact of Amygdala Plasticity ($\eta_{A0}$) on Energy Accumulation", fontsize=13, fontweight='bold')
+    plt.plot(data_vul['t'], data_vul['I_t'], 'r', label=r'Vulnerable Profile (Low Amygdala Plasticity: $\eta_{A0} = 0.02$)', linewidth=2)
+    plt.plot(data_res['t'], data_res['I_t'], 'b', label=r'Resilient Profile (High Amygdala Plasticity: $\eta_{A0} = 0.10$)', linewidth=2)
+    plt.axhline(5.0, color='black', linestyle='--', label=r'Collapse Threshold ($\Theta_{acc} = 5.0$)')
+    plt.title(r"BAM: Impact of Amygdala Plasticity ($\eta_{A0}$) on Somatic Collapse", fontsize=13, fontweight='bold')
     plt.xlabel("Timestep ($t$)")
-    plt.ylabel("Hesitation Energy ($H_t$)")
+    plt.ylabel("Accumulated Unprocessed Load ($I_t$)")
     plt.legend(loc='upper left')
     plt.tight_layout()
     plt.savefig('bam_comparison_eta.png', dpi=300)
     plt.close()
     print("[*] Comparison plot successfully saved as bam_comparison_eta.png")
-    print("[*] All BAM simulation tasks completed successfully.")
+    print("[*] All BAM Core Engine tasks completed successfully.")
