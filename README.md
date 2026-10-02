@@ -105,7 +105,7 @@ If you use this model, concepts, or simulation code in your research, please cit
   journal     = {Zenodo Preprint},
   year        = {2026},
   month       = {aug},
-  version     = {2.0.0},
+  version     = {2.0.1},
   doi         = {10.5281/zenodo.23074837},
   url         = {https://doi.org/10.5281/zenodo.23074837}
 }
