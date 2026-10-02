@@ -52,15 +52,15 @@ pip install -r requirements.txt
   python legacy_simulations/bam_v1_macro_dynamics.py
   ```
 
-- **オプション D: 実証的イン・シリコ検証（合成MBIマッピング）**  
-  BAMのコア方程式を、合成された経験的データ分布（MBI: バーンアウト指標 / JD-Rプロファイルへのマッピング）に対して評価します。システム・バースト予測の精度を示すROC-AUCパフォーマンス指標を生成します：
+- **オプション D: インシリコ概念シミュレーション（身体的崩壊ダイナミクス）**  
+  疑似データ分布を用いて、BAMのコア方程式（躊躇エネルギーと未処理備蓄負荷）の数学的挙動を評価し、身体的崩壊（Type 1 Burst）や相転移を概念化します。システムへの従属がいかにして構造的なストレス負債を駆動するかを示す、理論的なROC-AUC予測指標を生成します：
   ```bash
-  python bam_empirical_validation.py
+  python bam_Conceptual_Simulation.py
   ``` 
 
 ### 生成される出力図表:
 - **V2.0 出力:** `bam_simulation_vulnerable.png`, `bam_comparison_eta.png`（個人の認知崩壊および回復プロセスの動態 / 第8章に対応）
-- **実証検証 出力:** `bam_empirical_results.jpg`（躊躇エネルギーの表面図、バースト相転移、ROC-AUC曲線、および自律性によるリスク層別化を示す4分割診断プロット）
+- **概念シミュレーション出力:** `bam_conceptual_insilico_results.png（躊躇エネルギーの曲面図、身体的崩壊への相転移、ROC-AUC曲線、および主権的決断度によるリスク層別化を示す4分割診断プロット）
 - **V1.0 出力:** `bam_v1_simulation.png`（V1論文 Figure 2 の再現：適応的収束、再帰的振動、臨界バーストの3分岐シナリオ）
 
 ---
@@ -106,7 +106,7 @@ $$\mathrm{WTA}(V_t) = \theta(V_t - T_{\mathrm{E}})$$
   journal     = {Zenodo Preprint},
   year        = {2026},
   month       = {aug},
-  version     = {2.0.0},
+  version     = {2.0.1},
   doi         = {10.5281/zenodo.23074837},
   url         = {https://doi.org/10.5281/zenodo.23074837}
 }
