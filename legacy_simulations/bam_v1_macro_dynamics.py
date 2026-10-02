@@ -1,14 +1,16 @@
-import matplotlib
-matplotlib.use('Agg')  # Headless backend (Ensures zero GUI error on any OS/server)
 import matplotlib.pyplot as plt
 import numpy as np
 
 '''
-Binary Anchor Model (BAM) - V1.0 Dynamical Simulation
-Official reproduction script for Figure 2 in "The Binary Anchor: Cognition, Symbolic Loops, and Systems Failure (V1.0)"
-Author: Norimitsu Sawada (ORCID: 0009-0001-3306-0048)
-Repository: https://github.com/nobudy-bot/binary-anchor-model
-Dependencies: ONLY numpy and matplotlib
+Binary Anchor Model (BAM) - V1.0 Macro-Dynamics Simulation (Legacy)
+====================================================================
+Official reproduction script for Figure 2 in "The Binary Anchor (V1.0)"
+Author: Norimitsu Sawada (Independent Researcher)
+
+* Academic Note: This script reproduces the legacy V1.0 societal macro-dynamics 
+  (System Alignment A_t and System Load L_t). 
+  For the current V2.0 Master Equation and somatic collapse dynamics, 
+  please refer to `bam_engine.py`.
 '''
 
 def simulate_v1_scenario(scenario_type, T=100, seed=42):
@@ -90,6 +92,7 @@ def plot_v1_figure2(filename='bam_v1_simulation.png'):
     
     # Create Figure 2 style plot (2 subplots)
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 8), sharex=True)
+    fig.canvas.manager.set_window_title('BAM V1.0 - Legacy Macro Dynamics')
     
     for ax in [ax1, ax2]:
         ax.grid(True, color='#E0E0E0', linestyle='-', linewidth=0.5)
@@ -118,8 +121,8 @@ def plot_v1_figure2(filename='bam_v1_simulation.png'):
     
     plt.tight_layout()
     plt.savefig(filename, dpi=300)
-    plt.close()
     print(f"[*] V1 Simulation plot successfully saved as {filename}")
+    plt.show() # <-- 追加：実行時に画面に表示する！
 
 if __name__ == "__main__":
     print("[*] Running BAM V1.0 System Dynamics Simulation...")
